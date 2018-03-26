@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.simplyusejava.maven</groupId>
+  <artifactId>MavenProfilesExample</artifactId>
+  <version>0.0.1</version>
+  
+  <build>
+  	<resources>
+  		<resource>
+  			<directory>src/main/resources/</directory>
+  			<filtering>true</filtering>
+  		</resource>
+  	</resources>
+  </build>
+  
+  <profiles>
+  	<profile>
+  		<id>dev</id>
+  		<build>
+  			<finalName>${project.artifactId}-dev</finalName>
+  			<filters>
+  				<filter>src/main/resources/filters/dev.properties</filter>
+  			</filters>
+  		</build>
+  	</profile>
+  	<profile>
+  		<id>qa</id>
+  		<build>
+  			<finalName>${project.artifactId}-qa</finalName>
+  			<filters>
+  				<filter>src/main/resources/filters/qa.properties</filter>
+  			</filters>
+  		</build>
+  	</profile>
+  	<profile>
+  		<id>prod</id>
+  		<build>
+  			<finalName>${project.artifactId}-prod</finalName>
+  			<filters>
+  				<filter>src/main/resources/filters/prod.properties</filter>
+  			</filters>
+  		</build>
+  	</profile>
+  </profiles>
+  
+</project>
