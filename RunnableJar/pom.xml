@@ -1,0 +1,63 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.sv27.maven</groupId>
+  <artifactId>RunnableJar</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+  
+  	<dependency>
+  		<groupId>org.apache.commons</groupId>
+  		<artifactId>commons-math3</artifactId>
+  		<version>3.6.1</version>
+  	</dependency>
+  	
+  </dependencies>
+  
+  <build>
+  	<finalName>${project.artifactId}</finalName>
+  	
+  	<plugins>
+  		
+  		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.8.0</version>
+	        <configuration>
+	          <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
+	          <source>1.8</source>
+	          <target>1.8</target>
+	        </configuration>
+      	</plugin>
+
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-shade-plugin</artifactId>
+  			<version>3.2.1</version>
+  			<executions>
+  				<execution>
+  					<phase>install</phase>
+  					<goals>
+  						<goal>shade</goal>
+  					</goals>
+  					<configuration>
+  					   <createDependencyReducedPom>false</createDependencyReducedPom>
+  						<transformers>
+  							<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+  								<manifestEntries>
+  									<Main-Class>com.sv27.maven.app.NumericOperations</Main-Class>
+  									<Built-By>Simplyusejava</Built-By>
+  									<Build-Jdk>1.8</Build-Jdk>
+  								</manifestEntries>
+  							</transformer>
+  						</transformers>
+  					</configuration>
+  				</execution>
+  			</executions>
+  		</plugin>
+
+  	</plugins>
+  	
+  </build>
+  
+</project>
